@@ -1,6 +1,6 @@
 package org.example.model;
 
-public final class Book extends Product {
+public final class Book extends Product implements Printable{
 
     private String author;
 
@@ -27,5 +27,10 @@ public final class Book extends Product {
         return "Book{" +
                 "author='" + author + '\'' +
                 '}' + super.toString();
+    }
+
+    @Override
+    public void print() {
+        System.out.println("A Book: " + getDescription() + ", by " + getAuthor());
     }
 }

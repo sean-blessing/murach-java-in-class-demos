@@ -1,6 +1,6 @@
 package org.example.model;
 
-public final class Software extends Product {
+public final class Software extends Product implements Printable{
 
     private String version;
 
@@ -27,5 +27,10 @@ public final class Software extends Product {
         return "Software{" +
                 "version='" + version + '\'' +
                 '}' + super.toString();
+    }
+
+    @Override
+    public void print() {
+        System.out.println("Software: " + getDescription() + ", v" + getVersion());
     }
 }
