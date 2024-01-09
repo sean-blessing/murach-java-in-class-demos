@@ -9,7 +9,9 @@ public class ProductsWriterDemo {
     public static void main(String[] args) {
         System.out.println("Welcome to the products writer!");
 
-        String filename = "products.txt";
+        //String filename = "products.txt";
+        //String filename = "c:/files/products.txt";
+        String filename = "src/main/resources/products.txt";
 
         PrintWriter out = null;
         try {
