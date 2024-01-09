@@ -47,4 +47,8 @@ public class Product {
                 ", price=" + price +
                 '}';
     }
+
+    public String superToString() {
+        return super.toString();
+    }
 }
