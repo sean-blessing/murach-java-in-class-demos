@@ -73,7 +73,7 @@ public class Chapter15DemoApp {
         for(Product p: products) {
             System.out.println(p);
         }
-        Collections.sort(products);
+        //Collections.sort(products);
         System.out.println("List of products - sorted: ");
         for(Product p: products) {
             System.out.println(p);
