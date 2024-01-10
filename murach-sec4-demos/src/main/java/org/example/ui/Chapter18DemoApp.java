@@ -1,6 +1,9 @@
 package org.example.ui;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.time.temporal.ChronoUnit;
 
 public class Chapter18DemoApp {
 
@@ -53,7 +56,12 @@ public class Chapter18DemoApp {
         int hour = currentDateTime.getHour();
         System.out.println("currentDateTime.getHour(): "+hour);
 
-
+        // how many days until Halloween 2024?
+        long numberDaysUntilHalloween = currentDate.until(halloween1, ChronoUnit.DAYS);
+        System.out.println(numberDaysUntilHalloween + " days until Halloween!");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.
+                ofLocalizedDateTime(FormatStyle.MEDIUM);
+        System.out.println("current = "+dateTimeFormatter.format(currentDateTime));
 
         System.out.println("Bye");
 
