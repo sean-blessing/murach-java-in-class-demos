@@ -2,7 +2,7 @@ package org.example.model;
 
 import java.text.NumberFormat;
 
-public class Product {
+public class Product implements Comparable{
 
     private String code;
     private String description;
@@ -48,12 +48,12 @@ public class Product {
         NumberFormat currency = NumberFormat.getCurrencyInstance();
         return currency.format(price);
     }
-//
-//    @Override
-//    public int compareTo(Object o) {
-//        Product p = (Product)o;
-//        return this.code.compareTo(p.code);
-//    }
+
+    @Override
+    public int compareTo(Object o) {
+        Product p = (Product)o;
+        return this.code.compareTo(p.code);
+    }
 
     @Override
     public String toString() {

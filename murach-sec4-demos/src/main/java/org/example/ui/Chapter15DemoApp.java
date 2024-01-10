@@ -2,10 +2,7 @@ package org.example.ui;
 
 import org.example.model.Product;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Chapter15DemoApp {
     public static void main(String[] args) {
@@ -31,7 +28,7 @@ public class Chapter15DemoApp {
         //      Isn't that better? :)
         var nbrs = new ArrayList<Integer>();
         nbrs.add(1);
-        // numbers.add("two"); // checks type – doesn't compile
+        //nbrs.add("two"); // checks type – doesn't compile
         int nbr1 = nbrs.get(0); // no cast necessary
 
         // 4 - LinkedList - p. 505
@@ -73,7 +70,7 @@ public class Chapter15DemoApp {
         for(Product p: products) {
             System.out.println(p);
         }
-        //Collections.sort(products);
+        Collections.sort(products);
         System.out.println("List of products - sorted: ");
         for(Product p: products) {
             System.out.println(p);
@@ -81,7 +78,7 @@ public class Chapter15DemoApp {
 
         // 7 HashMaps - p. 523
         // TreeMaps' keys are sorted, so HashMaps typically more efficient
-        HashMap<String, String> midwestStates = new HashMap<>();
+        Map<String, String> midwestStates = new HashMap<>();
         midwestStates.put("OH", "Ohio");
         midwestStates.put("IL", "Illinois");
         midwestStates.put("MO", "Missouri");
