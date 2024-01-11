@@ -63,10 +63,35 @@ public class ProductDBManagerApp {
     }
 
     public static void addProduct() {
-        System.out.println("Not Yet Implemented.");
+        System.out.println("ADD A PRODUCT");
+        String code = Console.getString("Enter product code: ");
+        String description = Console.getString("Enter product description: ");
+        double price = Console.getDouble("Enter product price: ");
+
+        Product p = new Product(code, description, price);
+
+        if (ProductDB.add(p)) {
+            System.out.println("Product added!");
+        }
     }
 
     public static void deleteProduct() {
-        System.out.println("Not Yet Implemented.");
+        System.out.println("DELETE A PRODUCT");
+        boolean success = false;
+
+        while (!success) {
+            String code = Console.getString("Enter code for product to delete: ");
+            Product p = ProductDB.get(code);
+            if (p == null) {
+                System.out.println("No product for code: "+code+". Please try again.");
+            }
+            else {
+                if (ProductDB.delete(p)) {
+                    success = true;
+                    System.out.println("Product successfully deleted!");
+                }
+            }
+        }
+
     }
 }

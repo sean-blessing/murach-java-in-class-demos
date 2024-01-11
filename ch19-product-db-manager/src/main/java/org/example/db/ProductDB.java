@@ -55,4 +55,43 @@ public class ProductDB {
         return product;
     }
 
+    public static boolean add(Product p) {
+        String sql = "INSERT INTO Products (ProductCode, Description, Price) "+
+                     "VALUES (?, ?, ?)";
+        boolean success = false;
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, p.getCode());
+            ps.setString(2, p.getDescription());
+            ps.setDouble(3, p.getPrice());
+            ps.executeUpdate();
+            success = true;
+        } catch (SQLException e) {
+            System.err.println("Add failed for product: "+p);
+            System.err.println(e);
+        }
+
+        return success;
+    }
+
+    public static boolean delete(Product p) {
+        boolean success = false;
+
+        String sql = "DELETE FROM Products" +
+                     " WHERE ProductCode = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, p.getCode());
+            ps.executeUpdate();
+            success = true;
+        } catch (SQLException e) {
+            System.err.println("Delete failed for product: "+p);
+            System.err.println(e);
+        }
+
+
+        return success;
+    }
+
 }
