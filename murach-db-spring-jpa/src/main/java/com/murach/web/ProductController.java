@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin
@@ -17,7 +18,7 @@ public class ProductController {
     ProductRepo productRepo;
 
     @GetMapping("/")
-    public Iterable<Product> getAll() {
+    public List<Product> getAll() {
         return productRepo.findAll();
     }
     @GetMapping("/{code}")
@@ -42,5 +43,10 @@ public class ProductController {
             productRepo.deleteById(code);
         }
         return product;
+    }
+
+    @GetMapping("/priceGreaterThan/{price}")
+    public List<Product> getAllByPriceGreaterThan(@PathVariable double price) {
+        return productRepo.findAllByPriceGreaterThan(price);
     }
 }
