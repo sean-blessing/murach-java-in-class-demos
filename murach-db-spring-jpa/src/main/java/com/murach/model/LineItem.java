@@ -7,7 +7,8 @@ import jakarta.persistence.*;
 public class LineItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int lineItemId;
+    @Column(name = "LineItemId")
+    private int id;
     private int invoiceId;
     @ManyToOne
     @JoinColumn(name="ProductCode")
@@ -17,19 +18,19 @@ public class LineItem {
     public LineItem() {
     }
 
-    public LineItem(int lineItemId, int invoiceId, Product product, int quantity) {
-        this.lineItemId = lineItemId;
+    public LineItem(int id, int invoiceId, Product product, int quantity) {
+        this.id = id;
         this.invoiceId = invoiceId;
         this.product = product;
         this.quantity = quantity;
     }
 
-    public int getLineItemId() {
-        return lineItemId;
+    public int getId() {
+        return id;
     }
 
-    public void setLineItemId(int lineItemId) {
-        this.lineItemId = lineItemId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getInvoiceId() {

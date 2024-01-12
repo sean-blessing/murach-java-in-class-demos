@@ -26,6 +26,12 @@ public class ProductController {
         return productRepo.findById(code);
     }
 
+    // demonstrating how to use a request parameter...
+    @GetMapping("/code")
+    public Optional<Product> getProduct(@RequestParam String code) {
+        return productRepo.findById(code);
+    }
+
     @PostMapping("/")
     public Product add(@RequestBody Product product) {
         return productRepo.save(product);
