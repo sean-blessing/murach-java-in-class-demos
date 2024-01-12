@@ -1,15 +1,26 @@
 package com.murach.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="LineItems")
 public class LineItem {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int lineItemId;
     private int invoiceId;
-    private String productCode;
+    @ManyToOne
+    @JoinColumn(name="ProductCode")
+    private Product product;
     private int quantity;
 
-    public LineItem(int lineItemId, int invoiceId, String productCode, int quantity) {
+    public LineItem() {
+    }
+
+    public LineItem(int lineItemId, int invoiceId, Product product, int quantity) {
         this.lineItemId = lineItemId;
         this.invoiceId = invoiceId;
-        this.productCode = productCode;
+        this.product = product;
         this.quantity = quantity;
     }
 
@@ -29,12 +40,12 @@ public class LineItem {
         this.invoiceId = invoiceId;
     }
 
-    public String getProductCode() {
-        return productCode;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getQuantity() {
